@@ -129,7 +129,7 @@ def about():
     type the search string and program will display only the lines with
     the search string. There is an option to highlight the search string 
     in the output. Output can be saved in the new file.
-    Program was developed in 2017 by Dragan Mudric 
+    Program was developed by Dragan Mudric in 2017.  
     """
     
     toplevel = Toplevel()
