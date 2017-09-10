@@ -3,6 +3,11 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 import threading
+import smtplib,os
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from shutil import copyfile
+from tkinter import simpledialog 
 
 def main():
     
@@ -65,6 +70,11 @@ def main():
     B3.bind("<Enter>", lambda event, h=B3: h.configure(bg="light gray")) #Change button color when hover
     B3.bind("<Leave>", lambda event, h=B3: h.configure(bg="SystemButtonFace")) #Change button color to default color when finish hovering
     
+    B4 = Button(F1, text="Email", width=7, command=mail)
+    B4.grid(row=3, column=2, padx=30, pady=35, sticky="NW")
+    B4.bind("<Enter>", lambda event, h=B4: h.configure(bg="light gray")) #Change button color when hover
+    B4.bind("<Leave>", lambda event, h=B4: h.configure(bg="SystemButtonFace")) #Change button color to default color when finish hovering
+    
     C1 = Checkbutton(F1, text="Highlight Search", variable=yesno, width=12, command=choice) #Add checkbutton with label "highlight" which triggers the function choice()
     C1.grid( row=2, column=2, padx=30, pady=3, sticky="W")
        
@@ -118,8 +128,7 @@ def main():
     grip = ttk.Sizegrip(window)   #Add Sizegrip widget which allows a user to resize entire application window. It is located in the bottom right corner of the application. 
     grip.grid(column=100, row=100, sticky=("se"))
              
-    window.mainloop()   #Close main window
-    
+    window.mainloop()   #Close main window    
 
 def about():    
     aboutText = """About
@@ -188,6 +197,7 @@ def go():
             if search in line:
                 with open("file1error.txt","a") as file:
                     file.write(line)
+                copyfile("file1error.txt","file1error_mail.txt")
                     
                  
     with open("file1error.txt","r") as file: #Open file
@@ -207,6 +217,42 @@ def go():
     with open("file1error.txt", "w"):        #Delete everything from the file "file1error.txt"
         pass        
 
+def mail():
+    
+    lista=[] #initiating list 
+    with open("file1error_mail.txt",'r') as jabber:        
+        for line in jabber:
+                                            
+            lista.append(line) #Appending list with the line with error in it
+            stringa = "".join(lista) #Converting list to a string
+            
+    try:                           
+        if stringa.strip(): #This will check if string has any characters. If it can "strip" then it is not empty
+            
+            addr = simpledialog.askstring("Email address", "  Please enter your email address  ")
+            #Creating variables                                                       
+            fromaddr = "logsearch@citrix.com" 
+            toaddr = addr
+            subject = "An error has been found in the log"
+            body = stringa
+            
+            #Creating email 
+            msg = MIMEMultipart()
+            msg['From'] = fromaddr
+            msg['To'] = toaddr
+            msg['Subject'] = subject
+            msg.attach(MIMEText(body, 'plain'))
+            
+            #Sending email 
+            server = smtplib.SMTP('10.32.128.146', 25)
+            server.ehlo()
+            text = msg.as_string() #Converting object to a string
+            server.sendmail(fromaddr, toaddr, text)
+            print("Email with error logs has been sent to you!")
+        
+    except NameError:
+        print("The file is empty!")
+        
 def openfile():    
     global filename
     filename = filedialog.askopenfilename() #For file browsing and getting the path displayed
