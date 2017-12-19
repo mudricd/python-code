@@ -184,7 +184,7 @@ def find():
                 break   #Exit loop if no more
             
             lastidx = ("{}+{}c").format(idx, len(s))   #Index right after the end of the occurrence           
-            E2.tag_add('found', idx, lastidx)   #Tag the whole occurrence (start included, stop excluded)            
+            E2.tag_add('found', idx, lastidx)   ##Tag the whole occurrence (start included, stop excluded)            
             idx = lastidx   #Prepare to search for next occurrence. Set the first index from the loop to be the last one so the search will start again but from the last found index.
         
         E2.tag_config('found', foreground='blue')   #Use a blue foreground for all the tagged occurrences    
