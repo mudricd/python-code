@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 
+
 import platform
 import subprocess
+
 
 def execute():
 
@@ -14,5 +16,5 @@ def execute():
         subprocess.call('/bin/rpm -i /root/files/repo/epel-release-latest-6.noarch.rpm',shell=True)
     elif dist[1][0] == '5':
         subprocess.call('/bin/rpm -i /root/files/repo/epel-release-latest-5.noarch.rpm',shell=True)
-
+		
 execute()
