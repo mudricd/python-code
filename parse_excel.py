@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 #Read from Excel
 
 xl= pd.ExcelFile("Server_list.xlsx")
