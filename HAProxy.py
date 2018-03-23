@@ -13,7 +13,7 @@ class MainGUI(object):
         F1 = LabelFrame(window, text="HBDHB Infrastructure team", borderwidth=2, relief="groove")  #Create LabelFrame widget in main window 
         F1.grid(row=0, column=0, padx=3, pady=10, sticky="EW")             #Put LabelFrame widget in row 0 column 0      
         
-        L1 = Label(F1, text="EXCHANGE",borderwidth=2, relief="ridge",fg="dark green")              #Add label "EXCHANGE"
+        L1 = Label(F1, text="EXCHANGE",borderwidth=2, relief="ridge",fg="dark green")             #Add label "EXCHANGE"
         L1.grid(row=0, column=4,padx=3)
 
         L2 = Label(F1, text="ADFS",borderwidth=2, relief="ridge",fg="dark green")              #Add label "ADFS"
