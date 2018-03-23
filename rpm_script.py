@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
-
 import platform
 import subprocess
-
 
 def execute():
 
