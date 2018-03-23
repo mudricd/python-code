@@ -9,7 +9,7 @@ class MainGUI(object):
          
         self.window=window
         self.db=db
-        self.window.wm_title("Running Diary") #Main window label/title
+        self.window.wm_title("Running Diary")   #Main window label/title
 
         F1 = LabelFrame(window, text="Dragan Mudric", borderwidth=2, relief="groove")  #Create LabelFrame widget in main window 
         F1.grid(row=0, column=0, padx=3, sticky="EW")             #Put LabelFrame widget in row 0 column 0
