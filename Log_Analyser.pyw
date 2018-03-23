@@ -13,7 +13,7 @@ def main():
     
     global window
     window = Tk()   #Open main window  
-    window.wm_title("Log Analyser") #Main window label/title
+    window.wm_title("Log Analyser")  #Main window label/title
     
     global yesno
     yesno = BooleanVar(window)   #String for checkbutton  
