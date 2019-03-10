@@ -85,7 +85,7 @@ class MainGUI(object):
         B20 = Button(F1, text="Keepalived restart",width=13,command=self.restart_keepalived)   #Add button with label "Keepalived restart" which restarts Keepalived service  
         B20.grid(row=4, column=6, padx=5, pady=3, sticky="WN")
         
-        B21 = Button(F1, text="Keepalived status",width=13,command=self.check_keepalived)   #Add button with label "Keepalived status" which cheks the status of the Keepalived service  
+        B21 = Button(F1, text="Keepalived status",width=13,command=self.check_keepalived)   #Add button with label "Keepalived status" which cheks the status of the keepalived service  
         B21.grid(row=5, column=6, padx=5, pady=3, sticky="WN")
         
         vScroll = Scrollbar(F1, orient=VERTICAL, command=self.E1.yview)    #Create vertical scroolbar
